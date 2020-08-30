@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LEADERBOARD</string>
+    <string name="tab_text_1">Learning Leaders</string>
+    <string name="tab_text_2">Skill IQ Leaders</string>
+    <string name="Submit">Submit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="top_learner_badge">top learner badge</string>
+    <string name="top_learner_name">Top learner name</string>
+    <string name="top_learner_hours_and_country">Top learner hours, country</string>
+</resources>
