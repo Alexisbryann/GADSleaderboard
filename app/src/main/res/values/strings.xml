@@ -8,4 +8,6 @@
     <string name="top_learner_badge">top learner badge</string>
     <string name="top_learner_name">Top learner name</string>
     <string name="top_learner_hours_and_country">Top learner hours, country</string>
+    <string name="textview">TextView</string>
+    <string name="learning_hours">learning hours</string>
 </resources>

@@ -3,10 +3,15 @@ package com.example.gadslearderboard;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.zip.Inflater;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +28,10 @@ public class FragmentLearningLeaders extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RecyclerView mRecyclerView;
+    private TextView mTextView;
+    private TextView mTextView1;
+    private ImageView mImageView;
 
     public FragmentLearningLeaders() {
         // Required empty public constructor
@@ -59,6 +68,16 @@ public class FragmentLearningLeaders extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_learning_leaders, container, false);
+        View view = inflater.inflate(R.layout.fragment_learning_leaders,container,false);
+        mRecyclerView = view.findViewById(R.id.recycler_view_learning_leaders);
+        mTextView = view.findViewById(R.id.textView_top_learner_name);
+        mTextView1 = view.findViewById(R.id.textView_top_learner_hours_and_country);
+        mImageView = view.findViewById(R.id.imageView_top_learner);
+
+        getLearners();
+        return view;
+    }
+
+    private void getLearners() {
     }
 }
