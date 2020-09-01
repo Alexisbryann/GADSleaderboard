@@ -1,5 +1,6 @@
-package com.example.gadslearderboard.adapter;
+package com.example.gadslearderboard.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,12 +29,12 @@ public class LearningAdapter extends RecyclerView.Adapter<LearningAdapter.Learni
     @NonNull
     @Override
     public LearningAdapter.LearningViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = this.mContext;
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        LayoutInflater layoutInflater = LayoutInflater.from(this.mContext);
         View learningView = layoutInflater.inflate(R.layout.item_learning_leaders,parent,false);
 
         return new LearningViewHolder(learningView);
     }
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull LearningAdapter.LearningViewHolder holder, int position) {
 
@@ -45,10 +46,10 @@ public class LearningAdapter extends RecyclerView.Adapter<LearningAdapter.Learni
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mLearningModelList.size();
     }
 
-    public class LearningViewHolder extends RecyclerView.ViewHolder {
+    public static class LearningViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView mBadge;
         private final TextView mName;

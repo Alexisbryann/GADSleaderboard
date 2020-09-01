@@ -1,4 +1,4 @@
-package com.example.gadslearderboard.adapter;
+package com.example.gadslearderboard.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
