@@ -11,8 +11,8 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public interface GetDataService {
-    @GET("/hours")
+public interface Api {
+    @GET("api/hours")
     Call<List<LearningModel>>getLearningLeaders();
 
     @GET("/skill")

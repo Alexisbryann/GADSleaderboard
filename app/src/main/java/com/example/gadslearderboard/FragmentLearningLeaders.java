@@ -15,8 +15,8 @@ import android.widget.TextView;
 
 import com.example.gadslearderboard.adapters.LearningAdapter;
 import com.example.gadslearderboard.data.model.LearningModel;
-import com.example.gadslearderboard.data.network.GetDataService;
-import com.example.gadslearderboard.data.network.RetrofitClientInstance;
+import com.example.gadslearderboard.data.network.Api;
+import com.example.gadslearderboard.data.network.ApiClient;
 
 import java.util.List;
 
@@ -31,6 +31,7 @@ public class FragmentLearningLeaders extends Fragment {
     private TextView mTextView1;
     private ImageView mImageView;
     private ProgressBar mProgressBar;
+    private LinearLayoutManager mLayoutManager;
 
     public FragmentLearningLeaders() {
         // Required empty public constructor
@@ -39,20 +40,20 @@ public class FragmentLearningLeaders extends Fragment {
 //    public static FragmentLearningLeaders newInstance(String param1, String param2) {
 //
 //    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+//
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_learning_leaders,container,false);
         mRecyclerView = view.findViewById(R.id.recycler_view_learning_leaders);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        mRecyclerView.setLayoutManager(layoutManager);
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
         mTextView = view.findViewById(R.id.textView_top_learner_name);
         mTextView1 = view.findViewById(R.id.textView_top_learner_hours_and_country);
         mImageView = view.findViewById(R.id.imageView_top_learner);
@@ -63,10 +64,21 @@ public class FragmentLearningLeaders extends Fragment {
     }
 
     private void getLearners() {
+ApiClient.getClient().getLearningLeaders().enqueue(new Callback<List<LearningModel>>() {
+//    @Override
+//    public void onResponse(Call<List<LearningModel>> call, Response<List<LearningModel>> response) {
+//
+//    }
+//
+//    @Override
+//    public void onFailure(Call<List<LearningModel>> call, Throwable t) {
 
-        GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
-        Call<List<LearningModel>> call = service.getLearningLeaders();
-        call.enqueue(new Callback<List<LearningModel>>() {
+//    }
+//});
+//        Api service = ApiClient.getClient().create(Api.class);
+//        Call<List<LearningModel>> call = service.getLearningLeaders();
+//        call.enqueue(new Callback<List<LearningModel>>()
+//        {
 
             private List<LearningModel> mLearningModelList;
             private LearningAdapter mLearningAdapter;

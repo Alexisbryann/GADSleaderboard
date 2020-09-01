@@ -10,6 +10,7 @@ import com.example.gadslearderboard.FragmentLearningLeaders;
 import com.example.gadslearderboard.FragmentSkillIqLeaders;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
+
     public ViewPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
@@ -17,16 +18,14 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = null;
-
-        if (position==0){
-            fragment = new FragmentLearningLeaders();
-        }else if (position==1){
-            fragment =new FragmentSkillIqLeaders();
+        switch (position){
+            case 0:
+                return new FragmentLearningLeaders();
+            case 1:
+                return new FragmentSkillIqLeaders();
         }
-        return fragment;
+        return null;
     }
-
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {

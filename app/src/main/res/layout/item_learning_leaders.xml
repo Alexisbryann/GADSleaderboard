@@ -6,12 +6,12 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="398dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true"
-        app:contentPadding="16dp">
+        app:contentPadding="4dp">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,8 +20,8 @@
 
             <ImageView
                 android:id="@+id/imageView_top_learner"
-                android:layout_width="142dp"
-                android:layout_height="109dp"
+                android:layout_width="84dp"
+                android:layout_height="81dp"
                 android:contentDescription="@string/top_learner_badge"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -32,8 +32,11 @@
                 android:id="@+id/textView_top_learner_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="@string/top_learner_name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView_top_learner"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +46,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/top_learner_hours_and_country"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -52,4 +55,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-    </FrameLayout>
+</FrameLayout>
