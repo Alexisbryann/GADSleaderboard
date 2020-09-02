@@ -1,13 +1,17 @@
 package com.example.gadslearderboard.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.gadslearderboard.R;
 import com.example.gadslearderboard.data.model.SkillModel;
 
@@ -31,10 +35,12 @@ public class SkillIqAdapter extends RecyclerView.Adapter<SkillIqAdapter.SkillIqV
 
         return new SkillIqViewHolder(skillView);
     }
-
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull SkillIqAdapter.SkillIqViewHolder holder, int position) {
-//        holder.itemView.
+        holder.mName.setText(mSkillModelList.get(position).getName());
+        holder.mScoreAndCountry.setText(mSkillModelList.get(position).getScore()+" Skill IQ Score ,"+mSkillModelList.get(position).getCountry());
+        Glide.with(mContext).load(mSkillModelList.get(position).getBadgeUrl()).centerCrop().into(holder.mBadge);
     }
 
     @Override
@@ -42,9 +48,17 @@ public class SkillIqAdapter extends RecyclerView.Adapter<SkillIqAdapter.SkillIqV
         return mSkillModelList.size();
     }
 
-    public class SkillIqViewHolder extends RecyclerView.ViewHolder {
+    public static class SkillIqViewHolder extends RecyclerView.ViewHolder {
+
+        private final ImageView mBadge;
+        private final TextView mName;
+        private final TextView mScoreAndCountry;
+
         public SkillIqViewHolder(@NonNull View itemView) {
             super(itemView);
+            mBadge = itemView.findViewById(R.id.image_view_skill_IQ);
+            mName = itemView.findViewById(R.id.textView_top_learner_name);
+            mScoreAndCountry = itemView.findViewById(R.id.text_view_skill_iq_score_and_country);
         }
     }
 }

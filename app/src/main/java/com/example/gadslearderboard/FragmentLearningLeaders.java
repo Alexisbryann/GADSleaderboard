@@ -37,23 +37,15 @@ public class FragmentLearningLeaders extends Fragment {
         // Required empty public constructor
     }
 
-//    public static FragmentLearningLeaders newInstance(String param1, String param2) {
-//
-//    }
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//    }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_learning_leaders,container,false);
         mRecyclerView = view.findViewById(R.id.recycler_view_learning_leaders);
+
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
+
         mTextView = view.findViewById(R.id.textView_top_learner_name);
         mTextView1 = view.findViewById(R.id.textView_top_learner_hours_and_country);
         mImageView = view.findViewById(R.id.imageView_top_learner);
@@ -65,20 +57,6 @@ public class FragmentLearningLeaders extends Fragment {
 
     private void getLearners() {
 ApiClient.getClient().getLearningLeaders().enqueue(new Callback<List<LearningModel>>() {
-//    @Override
-//    public void onResponse(Call<List<LearningModel>> call, Response<List<LearningModel>> response) {
-//
-//    }
-//
-//    @Override
-//    public void onFailure(Call<List<LearningModel>> call, Throwable t) {
-
-//    }
-//});
-//        Api service = ApiClient.getClient().create(Api.class);
-//        Call<List<LearningModel>> call = service.getLearningLeaders();
-//        call.enqueue(new Callback<List<LearningModel>>()
-//        {
 
             private List<LearningModel> mLearningModelList;
             private LearningAdapter mLearningAdapter;

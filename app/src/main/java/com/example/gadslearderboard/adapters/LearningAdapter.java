@@ -37,7 +37,6 @@ public class LearningAdapter extends RecyclerView.Adapter<LearningAdapter.Learni
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull LearningAdapter.LearningViewHolder holder, int position) {
-
         holder.mName.setText(mLearningModelList.get(position).getName());
         holder.mHoursAndCountry.setText(mLearningModelList.get(position).getHours()+mContext.getString(R.string.learning_hours)+mLearningModelList.get(position).getCountry());
         Glide.with(mContext).load(mLearningModelList.get(position).getBadgeUrl())
