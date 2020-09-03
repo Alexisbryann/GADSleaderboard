@@ -12,4 +12,9 @@
     <string name="skill_iq_learner_name">Skill IQ learner name</string>
     <string name="skill_iq_score_country">Skill IQ score , country</string>
     <string name="skill_iq_badge">Skill IQ badge</string>
+    <string name="first_name_hint">First Name</string>
+    <string name="last_name_hint">Last Name</string>
+    <string name="email_address_hint">Email Address</string>
+    <string name="hint_github_link">Project on GITHUB (link)</string>
+    <string name="submit_button">Submit</string>
 </resources>

@@ -1,4 +1,6 @@
 package com.example.gadslearderboard.ui.main;
 
-public class SubmissionActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SubmissionActivity extends AppCompatActivity {
 }
