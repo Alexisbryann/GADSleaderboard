@@ -1,4 +1,4 @@
-package com.example.gadslearderboard;
+package com.example.gadslearderboard.ui.main;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.gadslearderboard.R;
 import com.example.gadslearderboard.adapters.LearningAdapter;
 import com.example.gadslearderboard.data.model.LearningModel;
 import com.example.gadslearderboard.data.network.Api;
