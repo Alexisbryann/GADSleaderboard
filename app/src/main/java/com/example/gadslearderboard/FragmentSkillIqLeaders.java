@@ -44,8 +44,8 @@ public class FragmentSkillIqLeaders extends Fragment {
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mTextView = view.findViewById(R.id.textView_top_learner_name);
-        mTextView1 = view.findViewById(R.id.textView_top_learner_hours_and_country);
+        mTextView = view.findViewById(R.id.text_view_name);
+        mTextView1 = view.findViewById(R.id.text_view_skill_iq_score_and_country);
         mImageView = view.findViewById(R.id.image_view_skill_IQ);
 
         getSkillIQ();
@@ -55,19 +55,15 @@ public class FragmentSkillIqLeaders extends Fragment {
     private void getSkillIQ() {
         ApiClient.getClient().getSkillIqLeaders().enqueue(new Callback<List<SkillModel>>() {
 
-            private SkillIqAdapter mSkillIqAdapter;
-            private List<SkillModel> mSkillModelList;
-
             @Override
             public void onResponse(Call<List<SkillModel>> call, Response<List<SkillModel>> response) {
                 if (response.isSuccessful()){
-                    mSkillModelList = response.body();
-                    mSkillIqAdapter = new SkillIqAdapter(getContext(),mSkillModelList);
-                    mRecyclerView.setAdapter(mSkillIqAdapter);
+                    List<SkillModel> skillModelList = response.body();
+                    SkillIqAdapter skillIqAdapter = new SkillIqAdapter(getContext(), skillModelList);
+                    mRecyclerView.setAdapter(skillIqAdapter);
                     mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 }
             }
-
             @Override
             public void onFailure(Call<List<SkillModel>> call, Throwable t) {
                 mTextView.setText(t.getMessage());

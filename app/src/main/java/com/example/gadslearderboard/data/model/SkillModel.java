@@ -5,18 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class SkillModel {
 
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("score")
-    @Expose
-    private Integer score;
-    @SerializedName("country")
-    @Expose
-    private String Country;
-    @SerializedName("badgeUrl")
-    @Expose
-    private String badgeUrl;
+
 
     public String getName() {
         return name;
@@ -49,4 +38,16 @@ public class SkillModel {
     public void setBadgeUrl(String badgeUrl) {
         this.badgeUrl = badgeUrl;
     }
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("score")
+    @Expose
+    private Integer score;
+    @SerializedName("country")
+    @Expose
+    private String Country;
+    @SerializedName("badgeUrl")
+    @Expose
+    private String badgeUrl;
 }

@@ -18,13 +18,13 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position){
-            case 0:
-                return new FragmentLearningLeaders();
-            case 1:
-                return new FragmentSkillIqLeaders();
+        Fragment fragment = null;
+        if (position==0){
+            fragment = new FragmentLearningLeaders();
+        }else if(position==1){
+            fragment = new FragmentSkillIqLeaders();
         }
-        return null;
+        return fragment;
     }
     @Nullable
     @Override

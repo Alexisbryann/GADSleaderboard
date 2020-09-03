@@ -29,8 +29,8 @@ public class SkillIqAdapter extends RecyclerView.Adapter<SkillIqAdapter.SkillIqV
     @NonNull
     @Override
     public SkillIqAdapter.SkillIqViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = this.mContext;
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
+
+        LayoutInflater layoutInflater = LayoutInflater.from(this.mContext);
         View skillView = layoutInflater.inflate(R.layout.item_skill_iq_leaders,parent,false);
 
         return new SkillIqViewHolder(skillView);
@@ -57,7 +57,7 @@ public class SkillIqAdapter extends RecyclerView.Adapter<SkillIqAdapter.SkillIqV
         public SkillIqViewHolder(@NonNull View itemView) {
             super(itemView);
             mBadge = itemView.findViewById(R.id.image_view_skill_IQ);
-            mName = itemView.findViewById(R.id.textView_top_learner_name);
+            mName = itemView.findViewById(R.id.text_view_name);
             mScoreAndCountry = itemView.findViewById(R.id.text_view_skill_iq_score_and_country);
         }
     }
