@@ -6,10 +6,24 @@
     android:layout_height="match_parent"
     android:background="@drawable/bkg">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="134dp"
+        android:background="@drawable/gads"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/abc_vector_test" />
+
     <FrameLayout
         android:id="@+id/frameLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +53,6 @@
                         android:background="#FFFFFF"
                         android:gravity="center_vertical"
                         android:hint="@string/first_name_hint"
-                        android:textAlignment="viewStart"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/text_view_last_name"
@@ -54,7 +67,6 @@
                         android:background="#FFFFFF"
                         android:gravity="center_vertical"
                         android:hint="@string/last_name_hint"
-                        android:textAlignment="viewStart"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +76,7 @@
             </FrameLayout>
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress"
+                android:id="@+id/editTextEmailAddress"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="32dp"
@@ -86,11 +98,10 @@
                 android:background="#FFFFFF"
                 android:gravity="center_vertical"
                 android:hint="@string/hint_github_link"
-                android:textAlignment="textStart"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -111,4 +122,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
+
+    <TextView
+        android:id="@+id/text_view_project_submission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/project_submission"
+        android:textColor="@color/darkOrange"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

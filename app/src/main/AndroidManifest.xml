@@ -21,9 +21,9 @@
         </activity>
         <activity
             android:name=".ui.main.SubmissionActivity"
-            android:parentActivityName=".ui.main.MainActivity">
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
-
     </application>
 
 </manifest>
