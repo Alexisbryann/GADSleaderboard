@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/abc_vector_test" />
+        app:navigationIcon="@drawable/back_arrow" />
 
     <FrameLayout
         android:id="@+id/frameLayout2"
@@ -43,43 +43,49 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/text_view_first_name"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="#FFFFFF"
-                        android:gravity="center_vertical"
-                        android:hint="@string/first_name_hint"
-                        android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/text_view_last_name"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/text_view_last_name"
+                    <EditText
+                        android:id="@+id/editTextTextFirstName"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:background="#FFFFFF"
-                        android:gravity="center_vertical"
-                        android:hint="@string/last_name_hint"
-                        android:textSize="24sp"
+                        android:ems="10"
+                        android:hint="@string/first_name_hint"
+                        android:inputType="textPersonName"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/editTextTextLastName"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:autofillHints="" />
+
+                    <EditText
+                        android:id="@+id/editTextTextLastName"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="#FFFFFF"
+                        android:ems="10"
+                        android:hint="@string/hint_github_link"
+                        android:inputType="textPersonName"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/text_view_first_name"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintStart_toEndOf="@+id/editTextTextFirstName"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:autofillHints="" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </FrameLayout>
 
             <EditText
-                android:id="@+id/editTextEmailAddress"
+                android:id="@+id/text_view_email_address"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
                 android:autofillHints=""
                 android:background="#FFFFFF"
                 android:ems="10"
@@ -90,18 +96,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
-            <TextView
-                android:id="@+id/text_view_github_link"
+            <EditText
+                android:id="@+id/editTextTextGithubLink"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:autofillHints=""
                 android:background="#FFFFFF"
-                android:gravity="center_vertical"
+                android:ems="10"
                 android:hint="@string/hint_github_link"
-                android:textSize="24sp"
+                android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
+                app:layout_constraintTop_toBottomOf="@+id/text_view_email_address" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
