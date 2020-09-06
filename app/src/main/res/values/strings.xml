@@ -26,4 +26,5 @@
     <string name="submission_successful">Submission Successful</string>
     <string name="failed">failed</string>
     <string name="not_successful">Submission not Successful</string>
+    <string name="splash_screen">Splash screen</string>
 </resources>
