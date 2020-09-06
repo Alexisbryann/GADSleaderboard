@@ -18,6 +18,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/back_arrow" />
 
+    <TextView
+        android:id="@+id/text_view_project_submission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/project_submission"
+        android:textColor="@color/darkOrange"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
     <FrameLayout
         android:id="@+id/frameLayout2"
         android:layout_width="0dp"
@@ -131,17 +143,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
-
-    <TextView
-        android:id="@+id/text_view_project_submission"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/project_submission"
-        android:textColor="@color/darkOrange"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
