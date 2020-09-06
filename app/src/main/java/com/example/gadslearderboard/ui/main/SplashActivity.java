@@ -11,8 +11,6 @@ public class SplashActivity extends AppCompatActivity {
     protected boolean _active = true;
     protected int _splashTime = 2000; // time to display the splash screen in ms
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

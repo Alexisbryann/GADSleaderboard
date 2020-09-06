@@ -62,7 +62,6 @@ public class SubmissionActivity extends AppCompatActivity {
     private void submitProject() {
 
         if (inputIsValid()){
-
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
             final AlertDialog alertDialog = alertBuilder.create();
             alertDialog.show();
@@ -70,6 +69,7 @@ public class SubmissionActivity extends AppCompatActivity {
             final LayoutInflater inflater = this.getLayoutInflater();
             final View alertView = inflater.inflate(R.layout.confirm_submission,null);
             alertDialog.getWindow().setContentView(alertView);
+
             ImageView cancel = alertView.findViewById(R.id.image_view_cancel);
             cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,6 +77,7 @@ public class SubmissionActivity extends AppCompatActivity {
                     alertDialog.dismiss();
                 }
             });
+
             Button yesButton = alertView.findViewById(R.id.button_yes);
             yesButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -88,10 +89,10 @@ public class SubmissionActivity extends AppCompatActivity {
                 private void submitProjectToServer() {
                     String firstName = mFirstName.getText().toString().trim();
                     String lastName = mLastName.getText().toString().trim();
-                    String emailAddress = mEmailAddress.getText().toString().trim();
-                    String gitHubLink = mGitHubLink.getText().toString().trim();
+                    String email = mEmailAddress.getText().toString().trim();
+                    String LinkToProject = mGitHubLink.getText().toString().trim();
 
-                    ApiClient.getGoogleDocs().submitProject(emailAddress,firstName,lastName,gitHubLink).enqueue(new Callback<Void>() {
+                    ApiClient.getGoogleDocsClient().submitProject(email,firstName,lastName,LinkToProject).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if (response.isSuccessful()){

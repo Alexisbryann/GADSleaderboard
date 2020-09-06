@@ -18,7 +18,7 @@ public class ApiClient {
         Api api = retrofit.create(Api.class);
         return api;
         }
-        public static Api getGoogleDocs(){
+        public static Api getGoogleDocsClient(){
         if (retrofit == null){
             retrofit = new Retrofit.Builder()
                     .baseUrl(GOOGLE_DOCS_BASE_URL)
