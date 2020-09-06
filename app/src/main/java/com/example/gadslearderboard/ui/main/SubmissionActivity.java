@@ -1,9 +1,12 @@
 package com.example.gadslearderboard.ui.main;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -12,12 +15,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.gadslearderboard.R;
+import com.example.gadslearderboard.data.network.ApiClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SubmissionActivity extends AppCompatActivity {
 
     private TextView mProjectSubmission;
     private EditText mFirstName;
-    private EditText mSecondName;
+    private EditText mLastName;
     private EditText mEmailAddress;
     private EditText mGitHubLink;
     private Button mSubmitActivity;
@@ -32,7 +40,7 @@ public class SubmissionActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.toolbar);
         mProjectSubmission = findViewById(R.id.text_view_project_submission);
         mFirstName = findViewById(R.id.editTextTextFirstName);
-        mSecondName = findViewById(R.id.editTextTextLastName);
+        mLastName = findViewById(R.id.editTextTextLastName);
         mEmailAddress = findViewById(R.id.text_view_email_address);
         mGitHubLink = findViewById(R.id.editTextTextGithubLink);
         mSubmitActivity = findViewById(R.id.button_submit_activity);
@@ -56,13 +64,83 @@ public class SubmissionActivity extends AppCompatActivity {
         if (inputIsValid()){
 
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-            AlertDialog alertDialog = alertBuilder.create();
+            final AlertDialog alertDialog = alertBuilder.create();
             alertDialog.show();
+            alertDialog.getWindow().setLayout(900,1000);
+            final LayoutInflater inflater = this.getLayoutInflater();
+            final View alertView = inflater.inflate(R.layout.confirm_submission,null);
+            alertDialog.getWindow().setContentView(alertView);
+            ImageView cancel = alertView.findViewById(R.id.image_view_cancel);
+            cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialog.dismiss();
+                }
+            });
+            Button yesButton = alertView.findViewById(R.id.button_yes);
+            yesButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialog.dismiss();
+                    submitProjectToServer();
+                }
+
+                private void submitProjectToServer() {
+                    String firstName = mFirstName.getText().toString().trim();
+                    String lastName = mLastName.getText().toString().trim();
+                    String emailAddress = mEmailAddress.getText().toString().trim();
+                    String gitHubLink = mGitHubLink.getText().toString().trim();
+
+                    ApiClient.getGoogleDocs().submitProject(emailAddress,firstName,lastName,gitHubLink).enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            if (response.isSuccessful()){
+                                Log.d("TAG","submitted successfully" + response.body());
+                                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(SubmissionActivity.this);
+                                AlertDialog alertDialog1 = alertBuilder.create();
+                                alertDialog1.show();
+                                alertDialog1.getWindow().setLayout(900,1000);
+                                LayoutInflater layoutInflater = SubmissionActivity.this.getLayoutInflater();
+                                View view = layoutInflater.inflate(R.layout.submission_successful,null);
+                                alertDialog1.getWindow().setContentView(view);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Log.d("TAG","submission failure" + t.getMessage());
+                            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(SubmissionActivity.this);
+                            AlertDialog alertDialog2 = alertBuilder.create();
+                            alertDialog2.show();
+                            alertDialog2.getWindow().setLayout(900,1000);
+                            LayoutInflater layoutInflater = SubmissionActivity.this.getLayoutInflater();
+                            View view = layoutInflater.inflate(R.layout.submission_not_successful,null);
+                            alertDialog2.getWindow().setContentView(view);
+                        }
+                    });
+                }
+            });
 
         }
     }
 
     private boolean inputIsValid() {
-        return false;
+        if (mFirstName.getText().toString().trim().equals("")){
+            mFirstName.setError("First name is required");
+            return false;
+        }
+        if (mLastName.getText().toString().trim().equals("")) {
+            mLastName.setError("Last name is required");
+            return false;
+        }
+        if (mEmailAddress.getText().toString().trim().equals("")) {
+            mEmailAddress.setError("Email address is required");
+            return false;
+        }
+        if (mGitHubLink.getText().toString().trim().equals("")) {
+            mGitHubLink.setError("GitHub link is required");
+            return false;
+        }
+        return true;
     }
 }

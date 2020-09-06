@@ -8,7 +8,7 @@
 
     <FrameLayout
         android:layout_width="0dp"
-        android:layout_height="389dp"
+        android:layout_height="361dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,10 +19,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="4dp"
-            app:cardUseCompatPadding="true"
-            app:contentPadding="4dp">
+            app:cardUseCompatPadding="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -30,8 +27,8 @@
 
                 <ImageView
                     android:id="@+id/image_view_cancel"
-                    android:layout_width="93dp"
-                    android:layout_height="83dp"
+                    android:layout_width="65dp"
+                    android:layout_height="76dp"
                     android:contentDescription="@string/image_view_cancel"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -55,13 +52,10 @@
                     android:id="@+id/image_view_question_mark"
                     android:layout_width="72dp"
                     android:layout_height="76dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="48dp"
+                    android:layout_marginTop="88dp"
                     android:contentDescription="@string/question_mark"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@id/text_view_are_you_sure"
-                    app:layout_constraintTop_toBottomOf="@+id/image_view_cancel"
+                    app:layout_constraintStart_toEndOf="@+id/text_view_are_you_sure"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@android:drawable/ic_menu_help"
                     app:tint="#000000" />
 
@@ -70,10 +64,12 @@
                     android:layout_width="134dp"
                     android:layout_height="54dp"
                     android:backgroundTint="#00000000"
+                    android:radius="8dp"
                     android:text="@string/yes_button"
                     android:textAllCaps="false"
                     android:textColor="@color/darkOrange"
                     android:textSize="25sp"
+                    app:color="@color/colorAccent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
