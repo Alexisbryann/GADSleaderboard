@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.gadslearderboard.R;
 import com.example.gadslearderboard.data.network.ApiClient;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -69,8 +70,9 @@ public class SubmissionActivity extends AppCompatActivity {
             final LayoutInflater inflater = this.getLayoutInflater();
             final View alertView = inflater.inflate(R.layout.confirm_submission,null);
             alertDialog.getWindow().setContentView(alertView);
-
+            Button yesButton = alertView.findViewById(R.id.button_yes);
             ImageView cancel = alertView.findViewById(R.id.image_view_cancel);
+
             cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -78,21 +80,29 @@ public class SubmissionActivity extends AppCompatActivity {
                 }
             });
 
-            Button yesButton = alertView.findViewById(R.id.button_yes);
             yesButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     alertDialog.dismiss();
                     submitProjectToServer();
-                }
+                };
+            });
+            }
 
-                private void submitProjectToServer() {
-                    String firstName = mFirstName.getText().toString().trim();
-                    String lastName = mLastName.getText().toString().trim();
-                    String email = mEmailAddress.getText().toString().trim();
-                    String LinkToProject = mGitHubLink.getText().toString().trim();
+//                private void submitProjectToServer()
+//            });
 
-                    ApiClient.getGoogleDocsClient().submitProject(email,firstName,lastName,LinkToProject).enqueue(new Callback<Void>() {
+        }
+
+    private void submitProjectToServer() {
+
+            String firstName = mFirstName.getText().toString().trim();
+            String lastName = mLastName.getText().toString().trim();
+            String email = mEmailAddress.getText().toString().trim();
+            String LinkToProject = mGitHubLink.getText().toString().trim();
+
+            ApiClient.getGoogleDocsClient().submitProject(firstName,lastName,email,LinkToProject)
+                    .enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if (response.isSuccessful()){
@@ -104,6 +114,16 @@ public class SubmissionActivity extends AppCompatActivity {
                                 LayoutInflater layoutInflater = SubmissionActivity.this.getLayoutInflater();
                                 View view = layoutInflater.inflate(R.layout.submission_successful,null);
                                 alertDialog1.getWindow().setContentView(view);
+                            }
+                            else {
+//                                Log.d("TAG","submission failure" + t.getMessage());
+                                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(SubmissionActivity.this);
+                                AlertDialog alertDialog2 = alertBuilder.create();
+                                alertDialog2.show();
+                                alertDialog2.getWindow().setLayout(900,1000);
+                                LayoutInflater layoutInflater = SubmissionActivity.this.getLayoutInflater();
+                                View view = layoutInflater.inflate(R.layout.submission_not_successful,null);
+                                alertDialog2.getWindow().setContentView(view);
                             }
                         }
 
@@ -119,11 +139,9 @@ public class SubmissionActivity extends AppCompatActivity {
                             alertDialog2.getWindow().setContentView(view);
                         }
                     });
-                }
-            });
-
         }
-    }
+
+//    }
 
     private boolean inputIsValid() {
         if (mFirstName.getText().toString().trim().equals("")){
